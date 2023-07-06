@@ -1,10 +1,18 @@
 \c topmodelsql
 
-CREATE TABLE brands
-    AS (SELECT distinct(brand) FROM models_1);
+CREATE TABLE brands(
+    brand_id SERIAL PRIMARY KEY,
+    brand TEXT
+);
 
-ALTER TABLE brands
-ADD brand_id SERIAL PRIMARY KEY;
+INSERT INTO brands 
+(brand) SELECT DISTINCT(brand) FROM models_1;
+
+-- CREATE TABLE brands
+--     AS (SELECT distinct(brand) FROM models_1);
+
+-- ALTER TABLE brands
+-- ADD brand_id SERIAL PRIMARY KEY;
 
 CREATE TABLE brand_model
     AS (SELECT model_id, brand_id FROM models_1 
