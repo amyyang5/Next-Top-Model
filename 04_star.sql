@@ -73,7 +73,7 @@ CREATE TABLE dim_next_event_dates(
 
 INSERT INTO dim_next_event_dates 
 (next_event_date_id, next_event_day_of_month, next_event_week_day, next_event_month,  next_event_year, next_event_quarter) 
-SELECT DISTINCT(next_event_date), DATE_PART('DAY', next_event_date), TO_CHAR(next_event_date, 'Day'), DATE_PART('MONTH',next_event_date), DATE_PART('YEAR',next_event_date), DATE_PART('quarter',next_event_quarter) FROM models
+SELECT DISTINCT(next_event_date), DATE_PART('DAY', next_event_date), TO_CHAR(next_event_date, 'Day'), DATE_PART('MONTH',next_event_date), DATE_PART('YEAR',next_event_date), DATE_PART('quarter',next_event_date) FROM models
 RETURNING *;
 
 SELECT model_id, model_name, (STRING_TO_ARRAY(brand, ', ')) AS brand, trait, rating, next_event_date, revenue
