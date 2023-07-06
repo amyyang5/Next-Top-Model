@@ -1,44 +1,72 @@
 \c topmodelsql
 
-
-
-
-
--- FACTS
---  model id
---  price per event
---  rating
---  next event date
---  revenue
-
-
-
 -- DIMENSIONS
 --  model_name
-
-CREATE TABLE model
+CREATE TABLE dim_model
     AS (SELECT model_id, model_name FROM models);
 
 --  area
-CREATE TABLE area(
+CREATE TABLE dim_area(
     area_id SERIAL PRIMARY KEY,
     area VARCHAR(30)
 );
 
-INSERT INTO area (area)
-SELECT area FROM models
+INSERT INTO dim_area (area)
+SELECT DISTINCT(area) as area FROM models
 RETURNING *;
         
 --  category_agent [DONE]
+CREATE TABLE dim_category_agent(
+    category_agent_id SERIAL PRIMARY KEY,
+    category VARCHAR(30),
+    agent VARCHAR(30)
+);
+
+INSERT INTO dim_category_agent 
+(category, agent) SELECT DISTINCT(category) as category, agent FROM models
+RETURNING *;
+
 --  brand [DONE]
+CREATE TABLE dim_brands(
+    brand_id SERIAL PRIMARY KEY,
+    brand TEXT
+);
+
+INSERT INTO dim_brands 
+(brand) SELECT DISTINCT(brand) as brand FROM models_1;
 
 --  trait
-CREATE TABLE trait(
+CREATE TABLE dim_traits(
     trait_id SERIAL PRIMARY KEY,
     trait VARCHAR(30)
 );
 
-INSERT INTO trait (trait)
+INSERT INTO dim_traits (trait)
 SELECT trait FROM models
 RETURNING *;
-      
+
+-- date
+CREATE TABLE dim_next_event_dates(
+    next_event_date_id DATE,
+    next_event_day_of_month INT,
+    next_event_week_day VARCHAR,
+    next_event_month INT,
+    next_event_year INT
+);
+
+INSERT INTO dim_next_event_dates 
+(next_event_date_id, next_event_day_of_month, next_event_week_day, next_event_month,  next_event_year) 
+SELECT next_event_date, DATE_PART('DAY', next_event_date), TO_CHAR(next_event_date, 'Day'), DATE_PART('MONTH',next_event_date), DATE_PART('YEAR',next_event_date) FROM models
+RETURNING *;
+
+-- FACTS
+CREATE TABLE fact_models
+  AS (
+    SELECT model_id, area_id, price_per_event, category_agent_id, trait_id, rating, next_event_date_id, revenue FROM models
+    JOIN dim_area ON models.area = dim_area.area
+    JOIN dim_category_agent ON models.agent = dim_category_agent.agent
+    JOIN dim_traits ON models.trait = dim_traits.trait 
+    JOIN dim_next_event_dates ON models.next_event_date = dim_next_event_dates.next_event_date_id 
+    );
+
+SELECT * FROM fact_models;
