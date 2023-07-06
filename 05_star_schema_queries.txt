@@ -1,0 +1,9 @@
+You are now connected to database "topmodelsql" as user "amy".
+ agent_with_lowest_rating 
+--------------------------
+(0 rows)
+
+ model_with_most_events 
+------------------------
+(0 rows)
+

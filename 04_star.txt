@@ -1,0 +1,143 @@
+You are now connected to database "topmodelsql" as user "amy".
+SELECT 14
+ model_id |    model_name    
+----------+------------------
+        1 | Bartholomew P
+        2 | Notso Neat
+        3 | Jarred MacKenzie
+        4 | Rathbones Arr
+        5 | Sarah B
+        6 | Cat Wang
+        7 | Starr Schema
+        8 | Sam Pagne
+        9 | Salle De Bain
+       10 | Slam Dunk
+       11 | Hannah Bee
+       12 | Rainsface W
+       13 | Raul Pogerson
+       14 | Ray Z
+(14 rows)
+
+CREATE TABLE
+ area_id |    area     
+---------+-------------
+       1 | Online
+       2 | Crewe
+       3 | London
+       4 | Athens
+       5 | Milan
+       6 | Stockholm
+       7 | Los Angeles
+(7 rows)
+
+INSERT 0 7
+CREATE TABLE
+ category_agent_id |  category   |   agent   
+-------------------+-------------+-----------
+                 1 | Parts       | Kev
+                 2 | Swimsuit    | Katherine
+                 3 | Glamour     | Rose
+                 4 | Fitness     | Paul
+                 5 | Commercial  | Christian
+                 6 | Fashion     | Verity
+                 7 | Promotional | Alex
+(7 rows)
+
+INSERT 0 7
+CREATE TABLE
+ brand_id |       brand       
+----------+-------------------
+        1 | Amazon
+        2 | Patagonia
+        3 | Vinted
+        4 | Wayfair
+        5 | HSBC
+        6 | Salomon
+        7 | Louboutin
+        8 | Aldi
+        9 | Buff
+       10 | Listo Burritos
+       11 | Chanel
+       12 | United Utilities
+       13 | Dior
+       14 | Reebok
+       15 | Instagram
+       16 | Stella McCartney
+       17 | H&M
+       18 | Oricle
+       19 | Poundland
+       20 | Nike
+       21 | Ebay
+       22 | Harrods
+       23 | Ikea
+       24 | Charities
+       25 | Adidas
+       26 | Marvel Studios
+       27 | Marks and Spencer
+(27 rows)
+
+INSERT 0 27
+CREATE TABLE
+ brand_combination_id |              brands              | model_id 
+----------------------+----------------------------------+----------
+                    1 | {Louboutin,H&M}                  |        1
+                    2 | {Aldi,Poundland}                 |        2
+                    3 | {Patagonia,Buff,Salomon}         |        3
+                    4 | {Adidas}                         |        4
+                    5 | {Ebay,Vinted,Instagram}          |        5
+                    6 | {Charities}                      |        6
+                    7 | {Oricle,"Marks and Spencer"}     |        7
+                    8 | {Harrods,HSBC}                   |        8
+                    9 | {Ikea,Wayfair,Amazon}            |        9
+                   10 | {Nike,Adidas,Reebok}             |       10
+                   11 | {Chanel,Dior,"Stella McCartney"} |       11
+                   12 | {"United Utilities"}             |       12
+                   13 | {"Listo Burritos"}               |       13
+                   14 | {"Marvel Studios"}               |       14
+(14 rows)
+
+INSERT 0 14
+CREATE TABLE
+ trait_id |      trait       
+----------+------------------
+        1 | Pro strutter
+        2 | The dadbod drop
+        3 | Fire_eating
+        4 | Hand modelling
+        5 | Influencer
+        6 | Catwalker
+        7 | Databases
+        8 | Old-money
+        9 | Architect
+       10 | High-tops
+       11 | Photography
+       12 | Impromptu crying
+       13 | Messy eating
+       14 | Card magic
+(14 rows)
+
+INSERT 0 14
+CREATE TABLE
+ model_id |    model_name    |              brand               |      trait       | rating | next_event_date | revenue 
+----------+------------------+----------------------------------+------------------+--------+-----------------+---------
+        1 | Bartholomew P    | {Louboutin,H&M}                  | Pro strutter     |      7 | 2022-11-15      | 2999.94
+        2 | Notso Neat       | {Aldi,Poundland}                 | The dadbod drop  |      1 | 2022-09-12      |  149.85
+        3 | Jarred MacKenzie | {Patagonia,Buff,Salomon}         | Fire_eating      |      4 | 2022-01-08      |    1530
+        4 | Rathbones Arr    | {Adidas}                         | Hand modelling   |      5 | 2022-03-06      | 1846.74
+        5 | Sarah B          | {Ebay,Vinted,Instagram}          | Influencer       |      7 | 2022-10-23      |    3458
+        6 | Cat Wang         | {Charities}                      | Catwalker        |      8 | 2022-05-14      |    3600
+        7 | Starr Schema     | {Oricle,"Marks and Spencer"}     | Databases        |      5 | 2022-09-12      |    1500
+        8 | Sam Pagne        | {Harrods,HSBC}                   | Old-money        |      9 | 2022-01-20      | 9899.89
+        9 | Salle De Bain    | {Ikea,Wayfair,Amazon}            | Architect        |      3 | 2022-07-16      |    1050
+       10 | Slam Dunk        | {Nike,Adidas,Reebok}             | High-tops        |      9 | 2022-08-23      | 7214.85
+       11 | Hannah Bee       | {Chanel,Dior,"Stella McCartney"} | Photography      |      6 | 2022-03-01      |    1625
+       12 | Rainsface W      | {"United Utilities"}             | Impromptu crying |      3 | 2022-05-14      |     480
+       13 | Raul Pogerson    | {"Listo Burritos"}               | Messy eating     |      2 | 2022-09-12      |     950
+       14 | Ray Z            | {"Marvel Studios"}               | Card magic       |      7 | 2022-04-18      | 5177.48
+(14 rows)
+
+SELECT 0
+ model_id | area_id | price_per_event | category_agent_id | brand_combination_id | trait_id | rating | next_event_date_id | revenue 
+----------+---------+-----------------+-------------------+----------------------+----------+--------+--------------------+---------
+(0 rows)
+
