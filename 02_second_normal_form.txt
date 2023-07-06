@@ -1,0 +1,87 @@
+You are now connected to database "topmodelsql" as user "amy".
+SELECT 27
+ALTER TABLE
+SELECT 28
+ALTER TABLE
+SELECT 14
+       brand       | brand_id 
+-------------------+----------
+ Amazon            |        1
+ Patagonia         |        2
+ Vinted            |        3
+ Wayfair           |        4
+ HSBC              |        5
+ Salomon           |        6
+ Louboutin         |        7
+ Aldi              |        8
+ Buff              |        9
+ Listo Burritos    |       10
+ Chanel            |       11
+ United Utilities  |       12
+ Dior              |       13
+ Reebok            |       14
+ Instagram         |       15
+ Stella McCartney  |       16
+ H&M               |       17
+ Oricle            |       18
+ Poundland         |       19
+ Nike              |       20
+ Ebay              |       21
+ Harrods           |       22
+ Ikea              |       23
+ Charities         |       24
+ Adidas            |       25
+ Marvel Studios    |       26
+ Marks and Spencer |       27
+(27 rows)
+
+ model_id | brand_id | brand_model_id 
+----------+----------+----------------
+        1 |        7 |              1
+        1 |       17 |              2
+        2 |        8 |              3
+        2 |       19 |              4
+        3 |        2 |              5
+        3 |        9 |              6
+        3 |        6 |              7
+        4 |       25 |              8
+        5 |       21 |              9
+        5 |        3 |             10
+        5 |       15 |             11
+        6 |       24 |             12
+        7 |       18 |             13
+        7 |       27 |             14
+        8 |       22 |             15
+        8 |        5 |             16
+        9 |       23 |             17
+        9 |        4 |             18
+        9 |        1 |             19
+       10 |       20 |             20
+       10 |       25 |             21
+       10 |       14 |             22
+       11 |       11 |             23
+       11 |       13 |             24
+       11 |       16 |             25
+       12 |       12 |             26
+       13 |       10 |             27
+       14 |       26 |             28
+(28 rows)
+
+ model_id |    model_name    |    area     | price_per_event |  category   |   agent   |      trait       | rating |  next_event_date  | revenue 
+----------+------------------+-------------+-----------------+-------------+-----------+------------------+--------+-------------------+---------
+        1 | Bartholomew P    | Milan       |          499.99 | Fashion     | Verity    | Pro strutter     |      7 | 15 November 2022  | 2999.94
+        2 | Notso Neat       | Online      |            9.99 | Promotional | Alex      | The dadbod drop  |      1 | 12 September 2022 |  149.85
+        3 | Jarred MacKenzie | Los Angeles |             170 | Fitness     | Paul      | Fire_eating      |      4 | 8 January 2022    |    1530
+        4 | Rathbones Arr    | London      |          263.82 | Parts       | Kev       | Hand modelling   |      5 | 6 March 2022      | 1846.74
+        5 | Sarah B          | Online      |          432.25 | Promotional | Alex      | Influencer       |      7 | 23 October 2022   |    3458
+        6 | Cat Wang         | Milan       |             600 | Fashion     | Verity    | Catwalker        |      8 | 14 May 2022       |    3600
+        7 | Starr Schema     | Crewe       |             250 | Glamour     | Rose      | Databases        |      5 | 12 September 2022 |    1500
+        8 | Sam Pagne        | Athens      |          899.99 | Swimsuit    | Katherine | Old-money        |      9 | 20 January 2022   | 9899.89
+        9 | Salle De Bain    | Stockholm   |             150 | Commercial  | Christian | Architect        |      3 | 16 July 2022      |    1050
+       10 | Slam Dunk        | Los Angeles |          801.65 | Fitness     | Paul      | High-tops        |      9 | 23 August 2022    | 7214.85
+       11 | Hannah Bee       | Milan       |             325 | Fashion     | Verity    | Photography      |      6 | 1 March 2022      |    1625
+       12 | Rainsface W      | Athens      |             120 | Swimsuit    | Katherine | Impromptu crying |      3 | 14 May 2022       |     480
+       13 | Raul Pogerson    | Stockholm   |              50 | Commercial  | Christian | Messy eating     |      2 | 12 September 2022 |     950
+       14 | Ray Z            | London      |          470.68 | Parts       | Kev       | Card magic       |      7 | 18 April 2022     | 5177.48
+(14 rows)
+
