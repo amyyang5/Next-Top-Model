@@ -8,12 +8,15 @@ CREATE TABLE brands(
 INSERT INTO brands 
 (brand) SELECT DISTINCT(brand) FROM models_1;
 
-CREATE TABLE brand_model
-    AS (SELECT model_id, brand_id FROM models_1 
-    JOIN brands ON models_1.brand = brands.brand);
+CREATE TABLE brand_model(
+    brand_model_id SERIAL PRIMARY KEY,
+    model_id INT,
+    brand_id INT
+);
 
-ALTER TABLE brand_model
-ADD brand_model_id SERIAL PRIMARY KEY;
+INSERT INTO brand_model
+(model_id, brand_id) SELECT model_id, brand_id FROM models_1
+JOIN brands ON models_1.brand = brands.brand;
 
 
 CREATE TABLE models_2
