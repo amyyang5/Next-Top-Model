@@ -33,7 +33,21 @@ CREATE TABLE dim_brands(
 );
 
 INSERT INTO dim_brands 
-(brand) SELECT DISTINCT(brand) as brand FROM models_1;
+(brand) SELECT DISTINCT(brand) as brand FROM models_1
+RETURNING *;
+
+-- brand model
+CREATE TABLE dim_brand_combination(
+    brand_combination_id SERIAL PRIMARY KEY,
+    brands TEXT ARRAY,
+    model_id INT
+);
+
+INSERT INTO dim_brand_combination
+(brands, model_id)
+SELECT (STRING_TO_ARRAY(brand, ', ')) AS brands, model_id
+FROM models
+RETURNING *;
 
 --  trait
 CREATE TABLE dim_traits(
@@ -56,15 +70,19 @@ CREATE TABLE dim_next_event_dates(
 
 INSERT INTO dim_next_event_dates 
 (next_event_date_id, next_event_day_of_month, next_event_week_day, next_event_month,  next_event_year) 
-SELECT next_event_date, DATE_PART('DAY', next_event_date), TO_CHAR(next_event_date, 'Day'), DATE_PART('MONTH',next_event_date), DATE_PART('YEAR',next_event_date) FROM models
+SELECT DISTINCT(next_event_date), DATE_PART('DAY', next_event_date), TO_CHAR(next_event_date, 'Day'), DATE_PART('MONTH',next_event_date), DATE_PART('YEAR',next_event_date) FROM models
 RETURNING *;
+
+SELECT model_id, model_name, (STRING_TO_ARRAY(brand, ', ')) AS brand, trait, rating, next_event_date, revenue
+      FROM models;
 
 -- FACTS
 CREATE TABLE fact_models
   AS (
-    SELECT model_id, area_id, price_per_event, category_agent_id, trait_id, rating, next_event_date_id, revenue FROM models
+    SELECT models.model_id, area_id, price_per_event, category_agent_id, brand_combination_id, trait_id, rating, next_event_date_id, revenue FROM models
     JOIN dim_area ON models.area = dim_area.area
     JOIN dim_category_agent ON models.agent = dim_category_agent.agent
+    JOIN dim_brand_combination ON models.model_id = dim_brand_combination.model_id
     JOIN dim_traits ON models.trait = dim_traits.trait 
     JOIN dim_next_event_dates ON models.next_event_date = dim_next_event_dates.next_event_date_id 
     );
